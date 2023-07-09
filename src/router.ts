@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { body, oneOf, validationResult } from "express-validator";
+import { body} from "express-validator";
 import { handleInputErrors } from "./modules/middleware";
-import { createProduct, getProduct, getProducts } from "./handlers/products";
+import { createProduct, deleteProduct, getProduct, getProducts } from "./handlers/products";
 
 const router = Router();
 
@@ -16,7 +16,7 @@ router.put(
   handleInputErrors,
   (req, res) => {}
 );
-router.delete("/product/:id", () => {});
+router.delete("/product/:id", deleteProduct);
 
 //update
 
