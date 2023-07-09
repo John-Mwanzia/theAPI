@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { body} from "express-validator";
 import { handleInputErrors } from "./modules/middleware";
-import { createProduct, deleteProduct, getProduct, getProducts } from "./handlers/products";
+import { createProduct, deleteProduct, getProduct, getProducts, updateProduct } from "./handlers/products";
 
 const router = Router();
 
@@ -14,7 +14,7 @@ router.put(
   "/product/:id",
   body("name").isString(),
   handleInputErrors,
-  (req, res) => {}
+  updateProduct
 );
 router.delete("/product/:id", deleteProduct);
 
@@ -31,7 +31,7 @@ router.put(
   "/update/:id",
   body("title").optional(),
   body("body").optional(),
-  body('status').isIn(['IN_PROGRESS','SHIPPED', 'DELIVERED', 'DEPRECATED']),
+  body('status').isIn(['IN_PROGRESS','SHIPPED', 'DELIVERED', 'DEPRECATED']).optional(),
   body("version").optional(),
   () => {}
 );
