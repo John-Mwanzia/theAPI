@@ -37,7 +37,9 @@ export const createUpdate = async (req, res) => {
     }
 
     const update = await prisma.update.create({
-        data: req.body,
+        data: {
+            ...req.body,
+        }
     });
 
     res.json({ data: update });
