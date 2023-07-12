@@ -13,11 +13,11 @@ app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // allows a client to add things like query string and params and it encodes and decodes it correctly for us
 
 app.get('/', (req, res, next) => {
-    // res.json({message: 'Hello from server'});
+    res.json({message: 'Hello from server'});
     
-    setTimeout(() => {
-        next(new Error('an error occured'));
-    }, 1);
+    // setTimeout(() => {
+    //     next(new Error('an error occured'));
+    // }, 1);
 });
 
 app.use('/api',protect, router); // all routes will be prefixed with /api   // protect is a middleware that will run before the router
